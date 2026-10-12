@@ -1,0 +1,9 @@
+{
+  "projectId": "YOUR_DEMO_PROJECT_ID",
+  "appId": "YOUR_WEB_APP_ID",
+  "apiKey": "YOUR_FIREBASE_WEB_API_KEY",
+  "authDomain": "YOUR_DEMO_PROJECT_ID.firebaseapp.com",
+  "firestoreDatabaseId": "(default)",
+  "storageBucket": "YOUR_DEMO_PROJECT_ID.firebasestorage.app",
+  "messagingSenderId": "YOUR_MESSAGING_SENDER_ID"
+}

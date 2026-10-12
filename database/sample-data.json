@@ -1,0 +1,9 @@
+{
+  "description": "Fictional documentation examples only. Not a Firebase managed export or a live account.",
+  "collections": {
+    "users": {"DEMO_AUTH_UID": {"uid":"DEMO_AUTH_UID","firstName":"Alex","lastName":"Example","username":"demo@example.com","email":"demo@example.com","mobile":"00000000000","address":"Fictional Demo Address","category":"solo-parent"}},
+    "appointments": {"demo-appointment": {"userId":"DEMO_AUTH_UID","userName":"Alex Example","benefitTitle":"Sample office visit","date":"2026-11-10","timeSlot":"09:00 AM","branch":"Demo Branch","purpose":"Portfolio demonstration","status":"Pending"}},
+    "services": {"demo-service": {"id":"demo-service","category":"solo-parent","titleEn":"Example Assistance","titleFil":"Halimbawang Tulong","descEn":"Fictional portfolio service, not an actual entitlement.","descFil":"Halimbawa lamang para sa portfolio.","amount":"Demo only","icon":"Heart","color":"blue"}},
+    "notifications": {"demo-notice":{"userId":"DEMO_AUTH_UID","title":"Demo notification","message":"Fictional example only.","isRead":false}}
+  }
+}

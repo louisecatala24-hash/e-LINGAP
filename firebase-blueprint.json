@@ -1,0 +1,490 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "sex": {
+          "type": "string",
+          "enum": [
+            "Male",
+            "Female",
+            "Other"
+          ]
+        },
+        "civilStatus": {
+          "type": "string",
+          "enum": [
+            "Single",
+            "Married",
+            "Separated"
+          ]
+        },
+        "birthYear": {
+          "type": "string"
+        },
+        "birthMonth": {
+          "type": "string"
+        },
+        "birthDay": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "solo-parent",
+            "senior",
+            "pwd"
+          ]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "uid",
+        "firstName",
+        "lastName",
+        "username",
+        "birthYear",
+        "birthMonth",
+        "birthDay",
+        "mobile",
+        "email"
+      ]
+    },
+    "Appointment": {
+      "title": "Appointment",
+      "description": "DSWD benefit application and appointment details",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "benefitTitle": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Pending Verification",
+            "Confirmed",
+            "Rescheduled"
+          ]
+        },
+        "location": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "benefitTitle",
+        "date",
+        "status",
+        "location",
+        "createdAt"
+      ]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "User notifications for appointment updates",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "appointment_approval",
+            "general"
+          ]
+        },
+        "isRead": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "userId",
+        "title",
+        "message",
+        "isRead",
+        "createdAt"
+      ]
+    },
+    "News": {
+      "title": "News",
+      "description": "App news and announcements",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "day": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "title",
+        "content",
+        "date",
+        "createdAt"
+      ]
+    },
+    "SystemUpdate": {
+      "title": "SystemUpdate",
+      "description": "Real-time system announcement from admin",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "day": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "title",
+        "message",
+        "date",
+        "updatedAt"
+      ]
+    },
+    "Benefit": {
+      "title": "Benefit",
+      "description": "Government benefit program details",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "solo-parent",
+            "senior",
+            "pwd"
+          ]
+        },
+        "titleEn": {
+          "type": "string"
+        },
+        "titleFil": {
+          "type": "string"
+        },
+        "descEn": {
+          "type": "string"
+        },
+        "descFil": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "freqEn": {
+          "type": "string"
+        },
+        "freqFil": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "category",
+        "titleEn",
+        "titleFil",
+        "descEn",
+        "descFil",
+        "amount",
+        "icon",
+        "color"
+      ]
+    },
+    "BenefitRequirements": {
+      "title": "BenefitRequirements",
+      "description": "Requirements for a specific benefit category",
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string",
+          "enum": [
+            "solo-parent",
+            "senior",
+            "pwd"
+          ]
+        },
+        "requirementsEn": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "requirementsFil": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "category",
+        "requirementsEn",
+        "requirementsFil"
+      ]
+    },
+    "SupportMessage": {
+      "title": "SupportMessage",
+      "description": "Messages sent in the Support Help Desk chat",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sender_id": {
+          "type": "string"
+        },
+        "sender_name": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "is_bot": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "sender_id",
+        "sender_name",
+        "message",
+        "is_bot"
+      ]
+    },
+    "SystemContacts": {
+      "title": "SystemContacts",
+      "description": "DSWD Contact Us channels and title configuration",
+      "type": "object",
+      "properties": {
+        "titleEn": {
+          "type": "string"
+        },
+        "titleFil": {
+          "type": "string"
+        },
+        "landline": {
+          "type": "string"
+        },
+        "globe": {
+          "type": "string"
+        },
+        "smart": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "titleEn",
+        "titleFil",
+        "landline",
+        "globe",
+        "smart",
+        "email"
+      ]
+    },
+    "DswdContact": {
+      "title": "DswdContact",
+      "description": "DSWD Contact Us card details",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "value"
+      ]
+    },
+    "Image": {
+      "title": "Image",
+      "description": "DSWD related portal images and assets metadata",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "uploadedBy": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "url"
+      ]
+    }
+  },
+  "firestore": {
+    "images/{imageId}": {
+      "schema": "Image",
+      "description": "Stored official imagery and portals logos dataset"
+    },
+    "DSWD CONTACTS/{contactId}": {
+      "schema": "DswdContact",
+      "description": "Contact Us information per category"
+    },
+    "system/contacts": {
+      "schema": "SystemContacts",
+      "description": "DSWD Contact details configured by admins"
+    },
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profiles by UID"
+    },
+    "appointments/{appointmentId}": {
+      "schema": "Appointment",
+      "description": "Benefit appointments tracking"
+    },
+    "notifications/{notificationId}": {
+      "schema": "Notification",
+      "description": "User notifications"
+    },
+    "News for users/{newsId}": {
+      "schema": "News",
+      "description": "App announcements"
+    },
+    "system/{configId}": {
+      "schema": "SystemUpdate",
+      "description": "Global system updates and announcements"
+    },
+    "services/{serviceId}": {
+      "schema": "Benefit",
+      "description": "Service programs"
+    },
+    "benefit-requirements/{categoryId}": {
+      "schema": "BenefitRequirements",
+      "description": "Requirements list per category"
+    },
+    "messages/{messageId}": {
+      "schema": "SupportMessage",
+      "description": "Welfare support chat sessions and history messages"
+    }
+  }
+}

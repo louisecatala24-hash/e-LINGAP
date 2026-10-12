@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-primary: #1B4FD8;
+  --color-primary-deep: #0F3399;
+  --color-primary-soft: #EEF3FF;
+  --color-accent: #FF6B35;
+  --color-surface: #FFFFFF;
+  --color-glass: rgba(255, 255, 255, 0.7);
+}
+
+@layer base {
+  body {
+    @apply bg-[#F4F7FF] text-[#1A1F36] font-sans antialiased;
+  }
+}
+
+.glass-morphism {
+  @apply backdrop-blur-xl bg-white/70 border border-white/40;
+}
+
+.shadow-soft {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.shadow-float {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.gradient-mesh {
+  background: 
+    radial-gradient(at 0% 0%, rgba(27, 79, 216, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(124, 58, 237, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(5, 150, 105, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(255, 107, 53, 0.1) 0px, transparent 50%);
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}

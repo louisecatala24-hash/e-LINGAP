@@ -1,0 +1,45 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function admin() { return signedIn() && request.auth.token.get('admin', false) == true; }
+    function owner(data) { return signedIn() && data.userId == request.auth.uid; }
+    match /users/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || admin());
+      allow create: if signedIn() && request.auth.uid == uid
+        && request.resource.data.uid == uid
+        && request.resource.data.keys().hasOnly(['uid','firstName','lastName','middleName','username','mobile','birthYear','birthMonth','birthDay','sex','civilStatus','address','category','email','createdAt','updatedAt']);
+      allow update: if signedIn() && request.auth.uid == uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['firstName','lastName','middleName','mobile','address','updatedAt']);
+    }
+    match /{collection}/{id} {
+      allow read: if collection in ['services','benefit-requirements','News for users','DSWD CONTACTS','images','system'];
+      allow write: if admin() && collection in ['services','benefits','benefit-requirements','News for users','DSWD CONTACTS','images','system'];
+      allow read: if collection in ['appointments','id_renewals','id_applications','requirements_submissions','id_replacements','digital_applications'] && (owner(resource.data) || admin());
+      allow create: if collection in ['appointments','id_renewals','id_applications','requirements_submissions','id_replacements','digital_applications']
+        && owner(request.resource.data) && request.resource.data.status == 'Pending'
+        && request.resource.data.createdAt == request.time;
+      allow update: if collection in ['appointments','id_renewals','id_applications','requirements_submissions','id_replacements','digital_applications']
+        && admin() && request.resource.data.userId == resource.data.userId;
+    }
+    match /appointments/{id} {
+      allow update: if owner(resource.data) && request.resource.data.userId == resource.data.userId
+        && ((request.resource.data.status == 'Cancelled'
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']))
+        || (request.resource.data.status == 'Rescheduled'
+          && resource.data.status in ['Pending', 'Rescheduled']
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['date', 'status'])));
+      allow delete: if owner(resource.data);
+    }
+    match /notifications/{id} {
+      allow read: if owner(resource.data) || admin();
+      // Client-generated notifications are personal UI notices, never proof of approval.
+      allow create: if owner(request.resource.data) && request.resource.data.isRead == false;
+      allow update: if owner(resource.data)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['isRead'])
+        && request.resource.data.isRead is bool;
+    }
+    match /test/connection { allow get: if true; }
+    match /{document=**} { allow read, write: if false; }
+  }
+}
