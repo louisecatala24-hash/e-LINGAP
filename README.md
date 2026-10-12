@@ -1,2 +1,2 @@
 # e-LINGAP — Citizen Intake and Welfare Registry
-e-LINGAP is a web-based academic prototype for solo parents, persons with disabilities (PWDs), and senior citizens. It brings benefit information, service applications, appointment scheduling, and request tracking into one portal to make welfare services easier to explore and manage. This project is for educational purposes and is not an official DSWD application.
+e-LINGAP is a digital welfare portal designed for solo parents, persons with disabilities (PWDs), and senior citizens. It brings benefit information, applications, appointment scheduling, and request tracking into one place, giving each group a clearer way to explore services and follow the progress of their requests.
